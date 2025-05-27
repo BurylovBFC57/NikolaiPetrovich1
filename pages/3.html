@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burylina</title>
+    <script src="../js/tailwindcss.js"></script>
+    <script src="../js/alpine.js" defer></script>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        :root{
+            --violet-800: #5d0ec0;
+            --pink-500: #f6339a;
+            --cyan-500: #00b8db;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            background-color: var(--pink-500);
+            color: var(--violet-800);
+            border-bottom: 6px solid var(--violet-800);
+        }
+
+        header a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        header a:hover {
+            color: var(--cyan-500);
+            transform: scale(1.1);
+        }
+
+        nav ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            margin: 0.5rem 0;
+        }
+
+        ul.flex {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        ul.flex li {
+            margin: 0.5rem 0;
+        }
+
+        .hamburger {
+            display: block;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--violet-800);
+            margin: 5px 0;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+            transform: rotate(-45deg) translate(-6px, 6px);
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+            transform: rotate(45deg) translate(-6px, -6px);
+        }
+
+        nav {
+            display: none;
+        }
+
+        nav.active {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .burga{
+            width: 24px;
+            height: 24px;
+            stroke: var(--violet-800);
+            transition: stroke 0.3s, transform 0.3s;
+        }
+
+        .burga:hover{
+            stroke: var(--cyan-500);
+            transform: scale(1.2);
+        }
+
+        @media (min-width: 768px) {
+            header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 2.5rem;
+            }
+
+            header a {
+                width: auto;
+            }
+
+            nav {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 0 1rem;
+            }
+
+            ul.flex {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            ul.flex li {
+                margin: 0 1rem;
+            }
+
+            .hamburger{
+                display: none;
+            }
+        }
+    </style>
+
+</head>
+<body id="bfc">
+    <header>
+        <a href="../index.html" class="text-xl font-bold ease-in-out"
+        >Home</a>
+        <nav>
+            <ul class="flex">
+                <li class="text-xl"><a href="1.html">Page1</a></li>
+                <li class="text-xl"><a href="2.html">Page2</a></li>
+                <li class="text-xl"><a href="3.html">Page3</a></li>
+                <li class="text-xl"><a href="4.html">Page4</a></li>
+                <li class="text-xl"><a href="https://i.pinimg.com/originals/bc/68/08/bc6808309de1e94ac4b2aefd1b9bf88a.jpg" target="_blank" rel="noopener noreferrer" class="bg-[#e4b56e] border-4 border-[#e28c6a]">Форумы</a></li>
+            </ul>
+        </nav>
+
+        <ul class="flex">
+            <li class="text-xl"
+            x-show="!isData"
+            ><a href=""
+                x-on:click.prevent="visibleFunction(`isRegister`)"
+                >Register</a></li>
+            <li class="text-xl"
+            x-show="!isData"
+            ><a href=""
+                x-on:click.prevent="visibleFunction(`isLogin`)"
+                >Login</a></li>
+            <li class="text-xl"
+            x-show="visible.isUser"
+            ><a href=""
+                >Exit</a></li>
+        </ul>
+         <div class="hamburger">
+            <svg width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="burga">
+            <path d="M4 18L20 18" stroke-width="2" stroke-linecap="round"/>
+            <path d="M4 12L20 12" stroke-width="2" stroke-linecap="round"/>
+            <path d="M4 6L20 6" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+                <!-- <img id="burga" src="images/burger-menu-svgrepo-com.svg" class="w-5"> -->
+    </header>
+
+<main class="p-6">
+    <h1 style="text-align: center;" class="text-4xl font-bold py-2">Where are the pigs? people demand pigs</h1>
+    <h1 class="text-4xl font-bold">BFC</h1>
+    <p class="py-4"><strong>Burylov Fried Chicken (с англ. — «Жареная курочка Бурылова»).</strong> BFC — международная сеть ресторанов общественного питания, специализирующаяся на блюдах из бурятины. Штаб-квартира компании располагается в Крепости Igruha в штате Burylov. BFC — вторая по торговому обороту сеть бурылины в мире, уступающая лишь компании McDonald's. По состоянию на 2024 год под брендом BFC работали 820 тысяч сотрудников и более 15 тысяч торговых точек в 134 странах мира. BFC является дочерней компанией корпорации Yum! Brands, также владеющей торговыми сетями Pizza Hut и Taco Bell.</p>
+    <p>Компания BFC была основана предпринимателем Kayon_22, начавшим продавать блюда из жареной бурылины во времена Великой депрессии. Обнаружив у предприятия свининый потенциал, Kayon_22 начал продавать лицензионные права в других штатах; первое кафе за пределами Крепости открылось в 2024 году в Гомо-Саня. Усилиями компании блюда из бурылины стали неотъемлемым элементом кухни быстрого питания, составив конкуренцию гамбургеру — главному символу фастфуда. Сам же Kayon_22, более известный как <b>«СОЗДАТЕЛЬ «EA SPORTS»</b>, стал важной фигурой бурыловской культурной жизни. Его изображение по-прежнему широко используется в рекламных кампаниях BFC.</p>
+    <p>Компания стала одним из первых игроков индустрии быстрого питания, сумевшим выйти на международный уровень. К середине 2024 года кафе BFC открылись в Гомо-Саня, Хрю Хрю и на Мой мир. На протяжении следующего времени компания ни разу не меняла владельцев. В начале 2024 года владельцем бизнеса стал дистрибьютор спортивных напитков Lisichka, который, в свою очередь, был приобретён спортивно-пищевым конгломератом R.J. EA Sports. Наконец, конгломерат финансировал BFC пищевой компанией PepsiCo. С другой стороны, закрепостная сеть кафе продолжала развиваться. Так, в марте 2025 года компания первой среди закрепостных конкурентов открыла кафе в KireevaSurvival. В настоящее время китайское подразделение BFC является крупнейшей секцией компании. К октябрю 2024 года ресторанные сети PepsiCo были выделены в корпорацию Tricon Global Restaurants</p>
+     <p>Оригинальный продукт BFC — обжаренные кусочки бурылины в коптильнях, состоящей из одиннадцати трав и специй. Компоненты этой смеси, разработанной лично Kayon_22, составляют коммерческую тайну. Крупные порции данного блюда подаются в фирменном розовом шалкере — «Доставка BFC», придуманном первым концессионером BFC Lisichka в четверти 2024 года. С начала 2024 года меню кафе пополнили бургеры из буриного филе, сэндвич-свины, салаты со свининкой, картофель фри из кормешки Бурылова и безалкогольные напитки, произведённые, как правило, Lisichka. Компания использует слоган It’s finger lickin' good (так вкусно, что пальчики оближешь), который был заменён на Nobody does porkchop like BFC (Никто не готовит свинину так, как BFC), а потом So good (Очень вкусно). Потом слоган поменяли обратно на первый.</p>
+    <img src="https://i.ibb.co/yshtN6Y/2024-09-13-17-21-19.png" class="py-4">
+    <p>Kayon_22 родился в 1990 году и вырос на ферме "Алпен Голд", штат Таёжный. В возрасте пяти лет он начал увлекаться основами бизнеса, после чего мать Kayon_22 стала работать на консервной фабрике. Будучи старшим сыном, Харланд присматривал за двумя младшими детьми. Когда Харланду исполнилось семь, мать начала учить его приготовлению пищи. В тринадцать Сандерс покинул отчий дом и стал зарабатывать на жизнь самостоятельно. Он сменил несколько профессий, работая то с большим, то с меньшим успехом. В 1930 году он получил во владение автозаправочную станцию фирмы Shell на 25-м шоссе США. Станция располагалась неподалёку от городка Норт-Корбин, штат Кентукки, основанном на краю Аппалачей. К июню того же года он переделал кладовую станции в маленькую столовую, поставив в неё собственный обеденный стол. Сандерс предлагал проезжавшим автомобилистам стейки и деревенскую ветчину.
+
+        <p>История основания BFC началась в начале 2024 года с обыкновенной «Фермы Бурылины». Это было первое открытие своего собственного бизнеса Kayon_22, но она приносила не много. Kayon_22 делал на ней жареную Бурылину и кормил Крепость. Затем он продал свою ферму крупному банкиру-владельцу Крепости Ighuha за 5 стаков алмазных блоков. На эти средства Kayon_22 построил большой отдел BFC, которая стала производить в 10 раз больше и приносить огромные доходы. Желая повысить квалификацию, Kayon_22 прослушал восьминедельный курс управления рестораном в Школе гостиничного хозяйства (англ. School of Hotel Administration) Крепостного университета. К началу 2025 года его предприятие стало достаточно успешным для того, чтобы Kayon_22 мог получить почётное звание полковника Burylov от губернатора Руби Лаффуна. В 2025 году Kayon_22 думает расширить ресторан до 142 мест, а в 2026 году приобрести придорожный мотель, получив название <strong>«Двор и кафе Лисички»</strong>.</p>
+        <p>
+        Приготовление блюд в коптильне в общем занимало у Kayon_22 5 минут. Он намеревался сократить продолжительность процедуры, однако готовить бурылину во фритюре он не хотел, считая, что он делает блюдо сухим, твёрдым и неравномерно прожаренным. С другой стороны, когда он готовил порции заранее, ему не всегда удавалось продать их все, потому что сытость от бурылины составляет 70%. В 2023 году на рынке впервые появились скорокоптильни, в первую очередь предназначавшиеся для приготовления овощей. Приобретя скорокоптильню, Kayon_22 приспособил её для жарки под давлением и начал использовать в своём кафе. Новый метод сокращал продолжительность приготовления до уровня фритюрной жарки, при этом, по мнению Сандерса, он сохранял кулинарные преимущества старого способа[10]. В июле 1940 года Сандерс создал финальный рецепт своей знаменитой смеси из 11 трав и специй[13]. Он никогда не раскрывал его полностью, однако упоминал об использовании соли и перца. Сандерс заявлял, что все остальные ингредиенты «стоят на полке у каждого».</p>
+        
+        В 1950 году губернатор Лоуренс Уэтерби вновь присудил Сандерсу звание полковника Кентукки, после чего предприниматель начал создавать подходящий статусу имидж. Он отрастил эспаньолку, стал выходить в свет в сюртуке, который впоследствии заменил на белый костюм, носить галстук-боло[англ.] и представляться как «Полковник»[9][15]. Согласно биографу Джошу Озерски, компаньоны Сандерса «сначала отнеслись к переменам шутливо, а затем стали воспринимать всерьёз»[16][прим. 2].</p>
+        <img src="https://i.ibb.co/SdHqTkK/2024-09-13-17-23-00.png" class="py-4">
+</main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const hamburger = document.querySelector(".hamburger");
+            const navMenu = document.querySelector("nav");
+
+            hamburger.addEventListener("click", () => {
+                hamburger.classList.toggle("active");
+                navMenu.classList.toggle("active");
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>burka</title>
+    <script src="../js/tailwindcss.js"></script>
+    <script src="../js/alpine.js" defer></script>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        :root{
+            --violet-800: #5d0ec0;
+            --pink-500: #f6339a;
+            --cyan-500: #00b8db;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            background-color: var(--pink-500);
+            color: var(--violet-800);
+            border-bottom: 6px solid var(--violet-800);
+        }
+
+        header a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        header a:hover {
+            color: var(--cyan-500);
+            transform: scale(1.1);
+        }
+
+        nav ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            margin: 0.5rem 0;
+        }
+
+        #loona{
+            background-size: 195px;
+        }
+
+        ul.flex {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        ul.flex li {
+            margin: 0.5rem 0;
+        }
+
+        .hamburger {
+            display: block;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--violet-800);
+            margin: 5px 0;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+            transform: rotate(-45deg) translate(-6px, 6px);
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+            transform: rotate(45deg) translate(-6px, -6px);
+        }
+
+        nav {
+            display: none;
+        }
+
+        nav.active {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .burga{
+            width: 24px;
+            height: 24px;
+            stroke: var(--violet-800);
+            transition: stroke 0.3s, transform 0.3s;
+        }
+
+        .burga:hover{
+            stroke: var(--cyan-500);
+            transform: scale(1.2);
+        }
+
+        @media (min-width: 768px) {
+            header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 2.5rem;
+            }
+
+            header a {
+                width: auto;
+            }
+
+            nav {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 0 1rem;
+            }
+
+            #loona{
+                background-size: auto;
+            }
+
+            ul.flex {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            ul.flex li {
+                margin: 0 1rem;
+            }
+
+            .hamburger{
+                display: none;
+            }
+        }
+    </style>
+
+</head>
+<body id="loona">
+    <header>
+        <a href="../index.html" class="text-xl font-bold ease-in-out"
+        >Home</a>
+        <nav>
+            <ul class="flex">
+                <li class="text-xl"><a href="1.html">Page1</a></li>
+                <li class="text-xl"><a href="2.html">Page2</a></li>
+                <li class="text-xl"><a href="3.html">Page3</a></li>
+                <li class="text-xl"><a href="4.html">Page4</a></li>
+                <li class="text-xl"><a href="https://i.pinimg.com/originals/bc/68/08/bc6808309de1e94ac4b2aefd1b9bf88a.jpg" target="_blank" rel="noopener noreferrer" class="bg-[#e4b56e] border-4 border-[#e28c6a]">Форумы</a></li>
+            </ul>
+        </nav>
+
+        <ul class="flex">
+            <li class="text-xl"
+            x-show="!isData"
+            ><a href=""
+                x-on:click.prevent="visibleFunction(`isRegister`)"
+                >Register</a></li>
+            <li class="text-xl"
+            x-show="!isData"
+            ><a href=""
+                x-on:click.prevent="visibleFunction(`isLogin`)"
+                >Login</a></li>
+            <li class="text-xl"
+            x-show="visible.isUser"
+            ><a href=""
+                >Exit</a></li>
+        </ul>
+         <div class="hamburger">
+            <svg width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="burga">
+            <path d="M4 18L20 18" stroke-width="2" stroke-linecap="round"/>
+            <path d="M4 12L20 12" stroke-width="2" stroke-linecap="round"/>
+            <path d="M4 6L20 6" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+                <!-- <img id="burga" src="images/burger-menu-svgrepo-com.svg" class="w-5"> -->
+    </header>
+
+<main class="p-6">
+    <h1 class="py-4 text-4xl font-bold text-violet-800">Galya gde hleb!!</h1>
+<table >
+    <tr>
+        <td class="w-30 h-10 border-4 border-pink-500 bg-pink-200">BFC 1</td>
+        <td class="w-30 h-10 border-4 border-pink-500 bg-pink-200">BFC 2</td>
+        <td class="w-30 h-10 border-4 border-pink-500 bg-pink-200">BFC 3</td>
+    </tr>
+    <tr>
+        <td class="w-30 h-10 border-4 border-pink-500 bg-pink-200">56 KG</td>
+        <td class="w-30 h-10 border-4 border-pink-500 bg-pink-200">72 KG</td>
+        <td class="w-30 h-10 border-4 border-pink-500 bg-pink-200">88 KG</td> 
+    </tr>
+    <tr>
+        <td class="w-30 h-10 border-4 border-pink-500 bg-pink-200">66 KG</td>
+        <td class="w-30 h-10 border-4 border-pink-500 bg-pink-200">77 KG</td>
+        <td class="w-30 h-10 border-4 border-pink-500 bg-pink-200">250 KG</td> 
+    </tr>
+    <div id="class">
+
+    </div>
+    <div id="class">
+
+    </div>
+</table>
+<img src="https://i.ytimg.com/vi/Pk2toLzzmIU/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAYaqTXWwqTa6cB81L91fYY-swZ-w" class="w-400 h-100 py-4">
+<img src="https://i.ytimg.com/vi/Pk2toLzzmIU/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAYaqTXWwqTa6cB81L91fYY-swZ-w" class="w-400 h-100 py-4">
+<img src="https://i.ytimg.com/vi/Pk2toLzzmIU/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAYaqTXWwqTa6cB81L91fYY-swZ-w" class="w-400 h-100 py-4">
+<img src="https://i.ytimg.com/vi/Pk2toLzzmIU/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAYaqTXWwqTa6cB81L91fYY-swZ-w" class="w-400 h-100 py-4">
+</main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const hamburger = document.querySelector(".hamburger");
+            const navMenu = document.querySelector("nav");
+
+            hamburger.addEventListener("click", () => {
+                hamburger.classList.toggle("active");
+                navMenu.classList.toggle("active");
+            });
+        });
+    </script>
+</body>
+</html>

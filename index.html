@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson1</title>
+    <script src="js/tailwindcss.js"></script>
+    <script src="js/alpine.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        :root{
+            --violet-800: #5d0ec0;
+            --pink-500: #f6339a;
+            --cyan-500: #00b8db;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            background-color: var(--pink-500);
+            color: var(--violet-800);
+            border-bottom: 6px solid var(--violet-800);
+        }
+
+        header a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        header a:hover {
+            color: var(--cyan-500);
+            transform: scale(1.1);
+        }
+
+        nav ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            margin: 0.5rem 0;
+        }
+
+        ul.flex {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        ul.flex li {
+            margin: 0.5rem 0;
+        }
+
+        .hamburger {
+            display: block;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--violet-800);
+            margin: 5px 0;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+            transform: rotate(-45deg) translate(-6px, 6px);
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+            transform: rotate(45deg) translate(-6px, -6px);
+        }
+
+        nav {
+            display: none;
+        }
+
+        nav.active {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .burga{
+            width: 24px;
+            height: 24px;
+            stroke: var(--violet-800);
+            transition: stroke 0.3s, transform 0.3s;
+        }
+
+        .burga:hover{
+            stroke: var(--cyan-500);
+            transform: scale(1.2);
+        }
+
+        @media (min-width: 768px) {
+            header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 2.5rem;
+            }
+
+            header a {
+                width: auto;
+            }
+
+            nav {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 0 1rem;
+            }
+
+            ul.flex {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            ul.flex li {
+                margin: 0 1rem;
+            }
+
+            .hamburger{
+                display: none;
+            }
+        }
+    </style>
+
+</head>
+<body id="egipet">
+    <header>
+        <a href="index.html" class="text-xl font-bold ease-in-out"
+        >Home</a>
+        <nav>
+            <ul class="flex">
+                <li class="text-xl"><a href="pages/1.html">Page1</a></li>
+                <li class="text-xl"><a href="pages/2.html">Page2</a></li>
+                <li class="text-xl"><a href="pages/3.html">Page3</a></li>
+                <li class="text-xl"><a href="pages/4.html">Page4</a></li>
+                <li class="text-xl"><a href="https://i.pinimg.com/originals/bc/68/08/bc6808309de1e94ac4b2aefd1b9bf88a.jpg" target="_blank" rel="noopener noreferrer" class="bg-[#e4b56e] border-4 border-[#e28c6a]">Форумы</a></li>
+            </ul>
+        </nav>
+
+        <ul class="flex">
+            <li class="text-xl"
+            x-show="!isData"
+            ><a href=""
+                x-on:click.prevent="visibleFunction(`isRegister`)"
+                >Register</a></li>
+            <li class="text-xl"
+            x-show="!isData"
+            ><a href=""
+                x-on:click.prevent="visibleFunction(`isLogin`)"
+                >Login</a></li>
+            <li class="text-xl"
+            x-show="visible.isUser"
+            ><a href=""
+                >Exit</a></li>
+        </ul>
+         <div class="hamburger">
+            <svg width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="burga">
+            <path d="M4 18L20 18" stroke-width="2" stroke-linecap="round"/>
+            <path d="M4 12L20 12" stroke-width="2" stroke-linecap="round"/>
+            <path d="M4 6L20 6" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+                <!-- <img id="burga" src="images/burger-menu-svgrepo-com.svg" class="w-5"> -->
+    </header>
+
+<main class="p-6">
+    <h1 class="py-2 text-5xl" title="Заголовок 1">EGIPETSKAYA SILA </h1>
+    <H2 class="py-2 text-4xl">Zhirtreso-combinat in the kvadrate</H2>
+    <h3 class="py-2 text-3xl">Galya zhrat!</h3>
+    <h3 class="py-2 text-2xl"> GALYA, BREAD!! &#9773;</h3>
+    <h4 class="py-2 text-xl">When you apply for a VTB card, mans don’t yell at VTB!</h4>
+<p>Галя хлеб! коля сначала селфи</p>
+    <P>Начала смотреть сериал вместе с братишкой, и мы смеялись над ним уже вместе. Брат с того времени успел вымахать за два метра роста и более 90 кг живого веса - из мальчишки-школьника превратился в натурального амбала. <br> Время, проведенное вместе, когда он был еще ребенком вспоминаю всегда с теплотой и смехом. Он у меня еще тот шутник, у нас множество совместных приколов, понятных только нам. Фразочки и цитаты из сериала прочно вошли в нашу с ним лексику. Например,<STRong> иногда чтобы его поддеть называю его "Люсей". Помните, Николай Петрович часто так называл своего сына Костю. У нас с братом вообще существует определение "как Костя Воронин" и "как дед из Ворониных".</STRong></P>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <b>Accusamus distinctio, a libero obcaecati vitae doloribus similique corporis natus assumenda illo consequatur eaque ut perferendis et quis autem nesciunt cum.</b>  Voluptate!</p>
+<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio delectus cum culpa deleniti ullam reprehenderit ipsam vel. <strong>BURYLOV</strong> weighs <b>3000 KG.</b> Quaerat, reiciendis. Soluta?</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab ratione officia incidunt reiciendis, numquam totam quod voluptatibus beatae consectetur illo alias cum enim labore vel? Dolores sequi exercitationem doloremque quis?</p>
+<p>Почта нужна не для того, чтобы письма отправлять, а для того, чтобы бабам было где зимой собираться.</p>
+<p>Брак — это проверка. Сколько ты всего сможешь выдержать, пока смерть не разлучит вас. Ну, другой вопрос, будет она естественной или вы <b>нахрен поубиваете друг друга!</b></p>
+&#128386; Почта России. Цена за отправку 19455&#8381;
+<p>Свежая свинина, вкусная свинина, приходите в BFC! Здесь высокие цены, зато качественная Бурылина. Не упустите скидку в 45% на свеже-приготовленную Бурылину. <strong>Самая вкусная и свежая Бурылина на свете только у нас, в BFC!</strong><sup>2</sup></p>
+<ul>
+<li>Line 1</li>
+<li>Line 2</li>
+<li>Line 3</li>
+<li>Line 4</li>    
+</ul>
+<ol>
+<li>BFC 1</li>
+<li>BFC 2</li>
+<li>BFC 3</li>
+<li>BFC 4</li>
+</ol>
+<p><a href="https://eda.ru/wiki/ingredienty/myaso-myasnaya-gastronomiya/svinina-13480" target="_blank" rel="noopener noreferrer" class="block hover:text-cyan-500 hover:scale-110 transition duration-400 text-blue-800 w-1/14 py-1 text-xl">Svinina.ru</a></p>
+<p></p><a href="https://code.mu/ru/markup/book/prime/" target="_blank" rel="noopener noreferrer" class="block hover:text-cyan-500 hover:scale-110 transition duration-400 text-blue-800 w-1/14 py-1 text-xl">Trepatchev.ru</a></p>
+<p><a href="https://www.rzd.ru/" target="_blank" rel="noopener noreferrer" class="block hover:text-cyan-500 hover:scale-110 transition duration-400 text-blue-800 w-1/14 py-1 text-xl">rzd.ru</a></p>
+<a href="https://m.youtube.com/?hl=ru" target="_blank" rel="noopener noreferrer" class="block hover:text-cyan-500 hover:scale-110 transition duration-400 text-blue-800 w-1/14 py-1 text-xl">Youtube.com</a>
+</main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const hamburger = document.querySelector(".hamburger");
+            const navMenu = document.querySelector("nav");
+
+            hamburger.addEventListener("click", () => {
+                hamburger.classList.toggle("active");
+                navMenu.classList.toggle("active");
+            });
+        });
+    </script>
+</body>
+</html>
